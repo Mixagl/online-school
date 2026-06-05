@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
+import { ModeToggle } from "@/components/ModeToggle";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -22,7 +23,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={cn("font-sans", inter.variable)}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col relative">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -30,6 +31,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <ModeToggle />
         </ThemeProvider>
       </body>
     </html>
