@@ -1,6 +1,7 @@
 import Advantages from "@/components/Advantages";
 import Hero from "@/components/Hero";
 import PopularCourses from "@/components/PopularCourses";
+import Reviews from "@/components/Reviews";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <Advantages />
       <PopularCourses />
+      <Reviews />
     </>
   );
 }
