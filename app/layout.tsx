@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { ModeToggle } from "@/components/ModeToggle";
 import Header from "@/components/Header";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: "Create Next App",
