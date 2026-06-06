@@ -5,8 +5,9 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import { ModeToggle } from "@/components/ModeToggle";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -33,6 +34,7 @@ export default function RootLayout({
         >
           <Header />
           {children}
+          <Footer />
           <ModeToggle />
         </ThemeProvider>
       </body>
