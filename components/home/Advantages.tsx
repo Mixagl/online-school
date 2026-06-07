@@ -7,8 +7,8 @@ import {
   LucideIcon,
   UserCheck,
 } from "lucide-react";
-import { Card, CardContent } from "./ui/card";
-import AnimatedSection from "./animated-section";
+import { Card, CardContent } from "../ui/card";
+import AnimatedSection from "../animated-section";
 
 const advantagesList: Array<{
   title: string;

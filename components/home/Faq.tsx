@@ -1,10 +1,10 @@
-import AnimatedSection from "./animated-section";
+import AnimatedSection from "../animated-section";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "./ui/accordion";
+} from "../ui/accordion";
 
 const faqList: Array<{ title: string; content: string; value: string }> = [
   {

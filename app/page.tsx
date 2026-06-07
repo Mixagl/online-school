@@ -1,8 +1,8 @@
-import Advantages from "@/components/Advantages";
-import Faq from "@/components/Faq";
-import Hero from "@/components/Hero";
-import PopularCourses from "@/components/PopularCourses";
-import Reviews from "@/components/Reviews";
+import Advantages from "@/components/home/Advantages";
+import Faq from "@/components/home/Faq";
+import Hero from "@/components/home/Hero";
+import PopularCourses from "@/components/home/PopularCourses";
+import Reviews from "@/components/home/Reviews";
 
 export default function Home() {
   return (

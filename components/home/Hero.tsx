@@ -1,9 +1,9 @@
 "use client";
 
 import { ArrowRight, Star, Users } from "lucide-react";
-import { Badge } from "./ui/badge";
+import { Badge } from "../ui/badge";
 import Link from "next/link";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { motion } from "framer-motion";
 
 export default function Hero() {

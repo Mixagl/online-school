@@ -1,8 +1,8 @@
 import { Star } from "lucide-react";
-import { Badge } from "./ui/badge";
-import { Card, CardContent } from "./ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import AnimatedSection from "./animated-section";
+import { Badge } from "../ui/badge";
+import { Card, CardContent } from "../ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import AnimatedSection from "../animated-section";
 
 const reviewsList: Array<{
   name: string;
