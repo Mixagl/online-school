@@ -2,6 +2,7 @@ import { Star } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { Card, CardContent } from "./ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import AnimatedSection from "./animated-section";
 
 const reviewsList: Array<{
   name: string;
@@ -34,7 +35,7 @@ const reviewsList: Array<{
 
 export default function Reviews() {
   return (
-    <section className="w-full bg-background pt-18" id="testimonials">
+    <AnimatedSection className="w-full bg-background pt-18" id="testimonials">
       <div className="container mx-auto flex flex-col px-5 gap-10">
         <h2 className="text-3xl sm:text-4xl md:text-5xl text-foreground text-center">
           Отзывы наших учеников
@@ -73,6 +74,6 @@ export default function Reviews() {
           ))}
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }

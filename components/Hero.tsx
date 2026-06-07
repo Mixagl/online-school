@@ -1,12 +1,20 @@
+"use client";
+
 import { ArrowRight, Star, Users } from "lucide-react";
 import { Badge } from "./ui/badge";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
     <section className="w-full h-200 pt-18">
-      <div className="h-full mx-auto container px-5 flex flex-col justify-center items-center gap-5">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="h-full mx-auto container px-5 flex flex-col justify-center items-center gap-5"
+      >
         <div className="flex flex-col sm:flex-row gap-2">
           <Badge variant={"outline"} className="px-5 py-4 text-sm">
             <Users /> 450+ учеников
@@ -34,7 +42,7 @@ export default function Hero() {
             </Button>
           </Link>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
