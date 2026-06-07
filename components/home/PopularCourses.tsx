@@ -35,7 +35,7 @@ const coursesList: Array<{
 
 export default function PopularCourses() {
   return (
-    <AnimatedSection className="w-full bg-background pt-18" id="courses">
+    <AnimatedSection className="w-full bg-background pt-50" id="courses">
       <div className="container mx-auto flex flex-col gap-10 px-5">
         <div className="flex flex-col gap-2">
           <h2 className="text-3xl sm:text-4xl md:text-5xl text-foreground text-center">

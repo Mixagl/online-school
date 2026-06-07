@@ -52,7 +52,7 @@ const advantagesList: Array<{
 
 export default function Advantages() {
   return (
-    <AnimatedSection className="w-full bg-background pt-18" id="advantages">
+    <AnimatedSection className="w-full bg-background pt-50" id="advantages">
       <div className="mx-auto container px-5 flex flex-col gap-10">
         <div className="flex flex-col gap-2">
           <h2 className="text-3xl sm:text-4xl md:text-5xl text-foreground text-center">

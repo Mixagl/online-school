@@ -35,7 +35,7 @@ const reviewsList: Array<{
 
 export default function Reviews() {
   return (
-    <AnimatedSection className="w-full bg-background pt-18" id="testimonials">
+    <AnimatedSection className="w-full bg-background pt-50" id="testimonials">
       <div className="container mx-auto flex flex-col px-5 gap-10">
         <h2 className="text-3xl sm:text-4xl md:text-5xl text-foreground text-center">
           Отзывы наших учеников

@@ -29,7 +29,7 @@ const faqList: Array<{ title: string; content: string; value: string }> = [
 
 export default function Faq() {
   return (
-    <AnimatedSection className="w-full pt-18 pb-18" id="faq">
+    <AnimatedSection className="w-full pt-50 pb-18" id="faq">
       <div className="container mx-auto flex flex-col gap-10 px-5">
         <div className="flex flex-col gap-3 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
