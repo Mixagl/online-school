@@ -33,7 +33,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="grow">{children}</main>
+          <main className="grow mt-18">{children}</main>
           <Footer />
           <ModeToggle />
         </ThemeProvider>

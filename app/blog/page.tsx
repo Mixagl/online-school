@@ -13,7 +13,7 @@ import { Badge } from "@/components/ui/badge";
 export default async function BlogPage() {
   const posts = await getPosts();
   return (
-    <section className="w-full bg-background pt-50 pb-50">
+    <section className="w-full bg-background pt-32 pb-32">
       <div className="mx-auto container px-5 flex flex-col gap-10">
         <div className="flex flex-col gap-2">
           <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl text-foreground text-center">
