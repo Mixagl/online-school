@@ -37,7 +37,7 @@ export default function Reviews() {
   return (
     <AnimatedSection className="w-full bg-background pt-50" id="testimonials">
       <div className="container mx-auto flex flex-col px-5 gap-10">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl text-foreground text-center">
+        <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl text-foreground text-center">
           Отзывы наших учеников
         </h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">

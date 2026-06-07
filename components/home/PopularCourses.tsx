@@ -38,7 +38,7 @@ export default function PopularCourses() {
     <AnimatedSection className="w-full bg-background pt-50" id="courses">
       <div className="container mx-auto flex flex-col gap-10 px-5">
         <div className="flex flex-col gap-2">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl text-foreground text-center">
+          <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl text-foreground text-center">
             Популярные курсы
           </h2>
           <p className="text-muted-foreground text-lg text-center max-w-2xl mx-auto">
