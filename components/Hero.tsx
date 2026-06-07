@@ -8,12 +8,12 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="w-full h-200 pt-18">
+    <section className="w-full min-h-[calc(100vh-72px)] flex items-center pt-22">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="h-full mx-auto container px-5 flex flex-col justify-center items-center gap-5"
+        className="h-full mx-auto container px-5 flex flex-col justify-center items-center gap-5 "
       >
         <div className="flex flex-col sm:flex-row gap-2">
           <Badge variant={"outline"} className="px-5 py-4 text-sm">
