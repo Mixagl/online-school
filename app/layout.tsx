@@ -25,7 +25,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={cn("font-sans", inter.variable)}
     >
-      <body className="min-h-full flex flex-col relative">
+      <body className="min-h-screen flex flex-col relative">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -33,7 +33,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          {children}
+          <main className="grow">{children}</main>
           <Footer />
           <ModeToggle />
         </ThemeProvider>
