@@ -25,8 +25,8 @@ export default function Hero() {
         </div>
         <h1 className="text-4xl max-w-6xl text-center sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
           Освойте{" "}
-          <span className="text-blue-500">востребованную профессию</span> в IT с
-          нуля за 6 месяцев
+          <span className="text-primary/70">востребованную профессию</span> в IT
+          с нуля за 6 месяцев
         </h1>
         <p className="text-base sm:text-lg text-center text-muted-foreground max-w-4xl leading-relaxed">
           Пошаговые онлайн-курсы с личным ментором-практиком. Гарантируем
