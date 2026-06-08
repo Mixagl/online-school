@@ -6,8 +6,9 @@ import { cn } from "@/lib/utils";
 import { ModeToggle } from "@/components/ModeToggle";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { Toaster } from "@/components/ui/sonner";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -34,6 +35,7 @@ export default function RootLayout({
         >
           <Header />
           <main className="grow mt-18">{children}</main>
+          <Toaster />
           <Footer />
           <ModeToggle />
         </ThemeProvider>
