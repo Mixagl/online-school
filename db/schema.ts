@@ -23,4 +23,5 @@ export const postSchema = createSelectSchema(posts);
 export const insertPostSchema = createInsertSchema(posts, {
   title: (schema) => schema.min(5, "Минимум 5 символов"),
   content: (schema) => schema.min(10, "Минимум 10 символов"),
+  slug: (schema) => schema.min(3, "Минимум 3 символа"),
 });
