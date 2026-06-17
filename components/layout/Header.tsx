@@ -32,8 +32,7 @@ export default function Header() {
           href={"/"}
           className="text-foreground font-bold text-3xl flex gap-2 items-center"
         >
-          <GraduationCap />
-          сотка
+          mixagl
         </Link>
         <nav className="hidden lg:block">
           <ul className="flex gap-5">

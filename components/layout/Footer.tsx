@@ -40,8 +40,7 @@ export default function Footer() {
               href="/"
               className="flex items-center gap-2 font-bold text-xl"
             >
-              <GraduationCap className="w-7 h-7 text-primary" />
-              <span>сотка</span>
+              <span>mixagl</span>
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
               Онлайн-школа программирования с гарантией трудоустройства.
