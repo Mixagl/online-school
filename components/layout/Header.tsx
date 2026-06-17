@@ -10,6 +10,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../ui/sheet";
+import { authClient } from "@/lib/auth-client";
+import { Avatar, AvatarFallback } from "../ui/avatar";
+import { useRouter } from "next/navigation";
 
 const links: Array<{ label: string; href: string }> = [
   { label: "Преимущества", href: "#advantages" },
@@ -19,6 +22,9 @@ const links: Array<{ label: string; href: string }> = [
 ];
 
 export default function Header() {
+  const router = useRouter();
+  const { data: session } = authClient.useSession();
+
   return (
     <header className="w-full bg-background border-b border-border h-18 fixed top-0 left-0 z-50">
       <div className="mx-auto container flex h-full items-center justify-between px-5">
@@ -29,7 +35,7 @@ export default function Header() {
           <GraduationCap />
           сотка
         </Link>
-        <nav className="hidden md:block">
+        <nav className="hidden lg:block">
           <ul className="flex gap-5">
             {links.map((link) => (
               <li key={link.href}>
@@ -44,11 +50,34 @@ export default function Header() {
           </ul>
         </nav>
         <div className="flex gap-5 items-center">
-          <Link href={"#courses"}>
-            <Button>Начать учиться</Button>
-          </Link>
+          {session ? (
+            <div className="hidden gap-3 items-center lg:flex">
+              <Avatar>
+                <AvatarFallback>{session?.user.name[0] || "?"}</AvatarFallback>
+              </Avatar>
+              {session?.user.name}
+              <Button
+                onClick={async () => {
+                  await authClient.signOut();
+                  router.push("/");
+                }}
+              >
+                Выйти
+              </Button>
+            </div>
+          ) : (
+            <div className="hidden gap-3 lg:flex">
+              <Link href={"/auth/login"}>
+                <Button>Войти</Button>
+              </Link>
+              <Link href={"/auth/register"}>
+                <Button>Регистрация</Button>
+              </Link>
+            </div>
+          )}
+
           <Sheet>
-            <SheetTrigger className="md:hidden" asChild>
+            <SheetTrigger className="lg:hidden" asChild>
               <Button variant={"ghost"} size={"icon"}>
                 <Menu />
               </Button>
@@ -72,6 +101,41 @@ export default function Header() {
                     ))}
                   </ul>
                 </nav>
+
+                <div className="mt-5 flex flex-col gap-2">
+                  {session ? (
+                    <>
+                      <div className="flex items-center gap-2">
+                        <Avatar>
+                          <AvatarFallback>
+                            {session.user.name?.[0]}
+                          </AvatarFallback>
+                        </Avatar>
+                        <span className="text-sm">{session.user.name}</span>
+                      </div>
+                      <Button
+                        onClick={async () => {
+                          await authClient.signOut();
+                          router.push("/");
+                        }}
+                        variant="secondary"
+                      >
+                        Выйти
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Link href="/auth/login">
+                        <Button className="w-full" variant="outline">
+                          Войти
+                        </Button>
+                      </Link>
+                      <Link href="/auth/register">
+                        <Button className="w-full">Регистрация</Button>
+                      </Link>
+                    </>
+                  )}
+                </div>
               </div>
             </SheetContent>
           </Sheet>
