@@ -16,6 +16,7 @@ export const posts = pgTable("posts", {
   category: categoriesEnum().notNull(),
   createdAt: timestamp().defaultNow(),
   updatedAt: timestamp().defaultNow(),
+  authorId: text("author_id"),
 });
 
 export const postSchema = createSelectSchema(posts);

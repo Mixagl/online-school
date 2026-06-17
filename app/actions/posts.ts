@@ -2,8 +2,10 @@
 
 import { db } from "@/db";
 import { insertPostSchema, posts } from "@/db/schema";
+import { auth } from "@/lib/auth";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
+import { headers } from "next/headers";
 
 export async function getPosts() {
   const posts = await db.query.posts.findMany();
@@ -19,6 +21,10 @@ export async function getPostBySlug(slug: string) {
 
 export async function createPost(formData: FormData) {
   try {
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+
     const raw = {
       title: formData.get("title") as string,
       slug: formData.get("slug") as string,
@@ -29,7 +35,7 @@ export async function createPost(formData: FormData) {
 
     const validated = insertPostSchema.parse(raw);
 
-    await db.insert(posts).values(validated);
+    await db.insert(posts).values({ ...validated, authorId: session?.user.id });
     revalidatePath("/blog");
     return { success: true };
   } catch {
