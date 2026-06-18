@@ -28,11 +28,14 @@ export default async function BlogPage() {
           {posts.map((post) => (
             <Card key={post.id} className="w-full max-w-2xl">
               <CardHeader className="flex flex-col gap-3">
-                <time className="text-sm text-muted-foreground">
-                  {post.createdAt
-                    ? new Date(post.createdAt).toLocaleDateString("ru-RU")
-                    : "—"}
-                </time>
+                <div className="flex gap-3 text-muted-foreground">
+                  <span>{post.authorName}</span>
+                  <time className="text-sm text-muted-foreground">
+                    {post.createdAt
+                      ? new Date(post.createdAt).toLocaleDateString("ru-RU")
+                      : "—"}
+                  </time>
+                </div>
                 <CardTitle>{post.title}</CardTitle>
                 <CardDescription>{post.description}</CardDescription>
                 <Badge variant="secondary" className="w-fit mb-2">

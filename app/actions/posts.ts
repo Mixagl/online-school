@@ -9,14 +9,35 @@ import { headers } from "next/headers";
 
 export async function getPosts() {
   const posts = await db.query.posts.findMany();
-  return posts;
+  const postsWithAuthors = await Promise.all(
+    posts.map(async (post) => {
+      const result = await db.execute(
+        `SELECT name FROM "user" WHERE id = '${post.authorId}'`,
+      );
+      return {
+        ...post,
+        authorName: result.rows[0]?.name as string,
+      };
+    }),
+  );
+
+  return postsWithAuthors;
 }
 
 export async function getPostBySlug(slug: string) {
   const post = await db.query.posts.findFirst({
     where: eq(posts.slug, slug),
   });
-  return post;
+
+  if (!post) return null;
+
+  const result = await db.execute(
+    `SELECT name FROM "user" WHERE id = '${post.authorId}'`,
+  );
+
+  const authorName = result.rows[0]?.name as string;
+
+  return { ...post, authorName };
 }
 
 export async function createPost(formData: FormData) {

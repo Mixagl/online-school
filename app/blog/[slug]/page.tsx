@@ -1,4 +1,5 @@
 import { getPostBySlug } from "@/app/actions/posts";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Dot } from "lucide-react";
 import { notFound } from "next/navigation";
@@ -20,6 +21,15 @@ export default async function Page({ params }: Props) {
       <div className="mx-auto container px-5 flex flex-col items-start gap-10 max-w-200">
         <div className="flex flex-col gap-5 items-start">
           <div className="flex gap-1 items-center">
+            <div className="flex gap-3 items-center">
+              <Avatar>
+                <AvatarFallback>{post.authorName[0] || "?"}</AvatarFallback>
+              </Avatar>
+              <span className="text-base text-foreground">
+                {post.authorName}
+              </span>
+            </div>
+            <Dot className="text-muted-foreground" />
             <Badge variant="default" className="w-fit">
               {post.category}
             </Badge>
