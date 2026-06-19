@@ -1,4 +1,4 @@
-import { relations } from "drizzle-orm";
+import { InferSelectModel, relations } from "drizzle-orm";
 import {
   boolean,
   integer,
@@ -57,3 +57,9 @@ export const lessonsRelations = relations(lessons, ({ one }) => ({
     references: [courses.id],
   }),
 }));
+
+export type Course = InferSelectModel<typeof courses> & {
+  lessons: InferSelectModel<typeof lessons>[];
+};
+
+export type Lesson = InferSelectModel<typeof lessons>;
