@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { GraduationCap, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -15,10 +15,8 @@ import { Avatar, AvatarFallback } from "../ui/avatar";
 import { useRouter } from "next/navigation";
 
 const links: Array<{ label: string; href: string }> = [
-  { label: "Преимущества", href: "#advantages" },
-  { label: "Популярные курсы", href: "#courses" },
-  { label: "Отзывы", href: "#testimonials" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Курсы", href: "/courses" },
+  { label: "Блог", href: "/blog" },
 ];
 
 export default function Header() {
