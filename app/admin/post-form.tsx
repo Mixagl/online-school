@@ -29,6 +29,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { createPostSchema, CreatePostSchemaType } from "@/lib/validations";
 
 interface Props {
   post?: {
@@ -41,21 +42,11 @@ interface Props {
   };
 }
 
-const formSchema = z.object({
-  title: z.string().min(5, "Минимум 5 символов"),
-  slug: z.string().min(3, "Минимум 3 символа"),
-  description: z.string().optional().nullable(),
-  content: z.string().min(10, "Минимум 10 символов"),
-  category: z.enum(["tutorial", "updates", "news"], {
-    message: "Выберите корректную категорию",
-  }),
-});
-
 export default function PostForm({ post }: Props) {
   const isEditing = !!post;
   const router = useRouter();
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<CreatePostSchemaType>({
+    resolver: zodResolver(createPostSchema),
     defaultValues: {
       title: post?.title || "",
       slug: post?.slug || "",
@@ -66,7 +57,7 @@ export default function PostForm({ post }: Props) {
     },
   });
 
-  async function onSubmit(data: z.infer<typeof formSchema>) {
+  async function onSubmit(data: CreatePostSchemaType) {
     const formData = new FormData();
     formData.append("title", data.title);
     formData.append("slug", data.slug);

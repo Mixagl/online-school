@@ -1,8 +1,9 @@
 "use server";
 
 import { db } from "@/db";
-import { insertPostSchema, posts } from "@/db/schema";
+import { posts } from "@/db/schema";
 import { auth } from "@/lib/auth";
+import { createPostSchema } from "@/lib/validations";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
@@ -54,7 +55,7 @@ export async function createPost(formData: FormData) {
       category: formData.get("category") as string,
     };
 
-    const validated = insertPostSchema.parse(raw);
+    const validated = createPostSchema.parse(raw);
 
     await db.insert(posts).values({ ...validated, authorId: session?.user.id });
     revalidatePath("/blog");
@@ -74,7 +75,7 @@ export async function updatePost(id: number, formData: FormData) {
       category: formData.get("category") as string,
     };
 
-    const validated = insertPostSchema.parse(raw);
+    const validated = createPostSchema.parse(raw);
 
     await db
       .update(posts)
