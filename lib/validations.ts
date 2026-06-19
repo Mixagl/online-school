@@ -11,3 +11,13 @@ export const createPostSchema = z.object({
 });
 
 export type CreatePostSchemaType = z.infer<typeof createPostSchema>;
+
+export const createCourseSchema = z.object({
+  title: z.string().min(5, "Минимум 5 символов"),
+  slug: z.string().min(3, "Минимум 3 символа"),
+  description: z.string().optional(),
+  image: z.string().optional(),
+  price: z.coerce.number().min(0, "Цена не может быть отрицательной"),
+});
+
+export type CreateCourseSchemaType = z.infer<typeof createCourseSchema>;

@@ -7,7 +7,6 @@ import {
   text,
   timestamp,
 } from "drizzle-orm/pg-core";
-import { user } from "./auth-schema";
 
 export const categoriesEnum = pgEnum("categories", [
   "tutorial",
@@ -34,9 +33,6 @@ export const courses = pgTable("courses", {
   description: text(),
   image: text(),
   price: integer().notNull().default(0),
-  authorId: text("author_id").references(() => user.id),
-  createdAt: timestamp().defaultNow(),
-  updatedAt: timestamp().defaultNow(),
 });
 
 export const lessons = pgTable("lessons", {
@@ -49,8 +45,6 @@ export const lessons = pgTable("lessons", {
     .notNull()
     .references(() => courses.id, { onDelete: "cascade" }),
   isFree: boolean("is_free").default(false),
-  createdAt: timestamp().defaultNow(),
-  updatedAt: timestamp().defaultNow(),
 });
 
 export const coursesRelations = relations(courses, ({ many }) => ({
