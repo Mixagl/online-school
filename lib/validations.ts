@@ -17,7 +17,7 @@ export const createCourseSchema = z.object({
   slug: z.string().min(3, "Минимум 3 символа"),
   description: z.string().optional(),
   image: z.string().optional(),
-  price: z.coerce.number().min(0, "Цена не может быть отрицательной"),
+  price: z.number().min(0, "Цена не может быть отрицательной"),
 });
 
 export type CreateCourseSchemaType = z.infer<typeof createCourseSchema>;

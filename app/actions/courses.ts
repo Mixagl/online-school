@@ -1,3 +1,5 @@
+"use server";
+
 import { db } from "@/db";
 import { courses, lessons } from "@/db/schema";
 import { createCourseSchema, CreateCourseSchemaType } from "@/lib/validations";

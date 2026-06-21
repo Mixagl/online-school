@@ -1,3 +1,4 @@
+import { getCourses } from "@/app/actions/courses";
 import DeleteDialog from "@/components/admin/DeletePostDialog";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,50 +9,45 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { db } from "@/db";
 import Link from "next/link";
 
 export default async function Page() {
-  const posts = await db.query.posts.findMany();
+  const courses = await getCourses();
 
   return (
     <section className="w-full bg-background pt-32 pb-32">
       <div className="mx-auto container px-5 flex flex-col gap-10">
         <div className="flex flex-col gap-5 items-start">
           <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl text-foreground text-center">
-            Управление постами
+            Управление курсами
           </h2>
           <Button asChild>
-            <Link href={"/admin/posts/new"}>Создать пост</Link>
+            <Link href={"/admin/courses/new"}>Добавить курс</Link>
           </Button>
         </div>
 
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Заголовок</TableHead>
-              <TableHead>Категория</TableHead>
-              <TableHead>Дата</TableHead>
+              <TableHead>Название</TableHead>
+              <TableHead>Цена</TableHead>
               <TableHead>Действия</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {posts.map((post) => (
-              <TableRow key={post.id}>
-                <TableCell>{post.title}</TableCell>
-                <TableCell>{post.category}</TableCell>
+            {courses.map((course) => (
+              <TableRow key={course.id}>
+                <TableCell>{course.title}</TableCell>
                 <TableCell>
-                  {post.createdAt
-                    ? new Date(post.createdAt).toLocaleDateString("ru-RU")
-                    : "—"}
+                  {course.price === 0 ? "Бесплатно" : course.price}
                 </TableCell>
                 <TableCell className="flex gap-3">
                   <Button asChild>
-                    <Link href={`/admin/posts/${post.id}/edit`}>
+                    <Link href={`/admin/courses/${course.slug}/edit`}>
                       Редактировать
                     </Link>
                   </Button>
-                  <DeleteDialog id={post.id} type="post"></DeleteDialog>
+                  <DeleteDialog id={course.id} type="course"></DeleteDialog>
                 </TableCell>
               </TableRow>
             ))}

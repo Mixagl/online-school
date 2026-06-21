@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -13,16 +12,23 @@ import {
 import { toast } from "sonner";
 import { useState } from "react";
 import { deletePost } from "@/app/actions/posts";
+import { deleteCourse } from "@/app/actions/courses";
 
-export default function DeletePostDialog({ id }: { id: number }) {
+interface Props {
+  id: number;
+  type: "post" | "course";
+}
+
+export default function DeleteDialog({ id, type }: Props) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const action = type === "post" ? deletePost : deleteCourse;
 
   async function handleDelete() {
     setLoading(true);
-    const result = await deletePost(id);
+    const result = await action(id);
     if (result.success) {
-      toast.success("Пост удалён");
+      toast.success(type === "post" ? "Пост удалён" : "Курс удален");
       setOpen(false);
     } else {
       toast.error("Ошибка удаления");
@@ -37,9 +43,12 @@ export default function DeletePostDialog({ id }: { id: number }) {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Удалить пост</DialogTitle>
+          <DialogTitle>
+            {type === "post" ? "Удалить пост" : "Удалить курс"}
+          </DialogTitle>
           <DialogDescription>
-            Вы уверены, что хотите удалить пост? Это действие нельзя отменить.
+            Вы уверены, что хотите удалить {type === "post" ? "пост" : "курс"}?
+            Это действие нельзя отменить.
           </DialogDescription>
         </DialogHeader>
         <Button
@@ -48,7 +57,9 @@ export default function DeletePostDialog({ id }: { id: number }) {
           disabled={loading}
           className="w-full"
         >
-          {loading ? "Удаление..." : "Удалить пост"}
+          {loading
+            ? "Удаление..."
+            : `Удалить ${type === "post" ? "пост" : "курс"}`}
         </Button>
       </DialogContent>
     </Dialog>
